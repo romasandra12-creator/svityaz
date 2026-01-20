@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Весілля на Світязі | Андрій та ...</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-bg">
+            <img src="hero.jpg" alt="Love Story">
+            <div class="overlay"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="border-frame" data-aos="zoom-in" data-aos-duration="1500">
+                <p class="date-top">14 . 08 . 2026</p>
+                
+                <h1 class="names">АНДРІЙ <span class="amp">&</span>ОЛЕКСАНДРА</h1> 
+                
+                <p class="location-hero">ОЗЕРО СВІТЯЗЬ 🌿</p>
+            </div>
+        </div>
+        
+        <div class="scroll-down">
+            <span>Гортайте</span>
+            <div class="arrow">↓</div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="story-section">
+            <div class="container grid-2">
+                <div class="story-img" data-aos="fade-right">
+                    <img src="intro.jpg" alt="Ми разом">
+                </div>
+                <div class="story-text-block" data-aos="fade-left">
+                    <h2>ЯК ВСЕ ПОЧАЛОСЯ ✨</h2>
+                    <div class="divider">~</div>
+                    <p class="story-lead">Все вирішила любов до рибалки...</p>
+                    <p>
+                        Ми гуляли повз озеро, і я захоплено розповідала, як сильно люблю рибалку. 
+                        Андрій раптом зупинився, відвернувся і серйозно сказав:
+                    </p>
+                    <p class="quote">«Колись ти будеш моєю дружиною»</p>
+                    <p>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-break" data-aos="zoom-in-up">
+            <img src="photo1.jpg" alt="Наше фото 1">
+        </section>
+
+        <section class="timeline-section" data-aos="fade-up">
+            <div class="container">
+                <h2>ТАЙМІНГ ДНЯ 🕰️</h2>
+                <div class="timeline">
+                    
+                    <div class="t-item">
+                        <div class="t-time">12:00</div>
+                        <div class="t-content">
+                            <h4>Вінчання ⛪</h4>
+                            <p>Церква Святого Миколая</p>
+                            <a href="https://goo.gl/maps/PLACEHOLDER" target="_blank" class="map-link">
+                                📍 с. Пульмо, вул. Незалежності, 187б
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="t-item">
+                        <div class="t-time">14:00</div>
+                        <div class="t-content">
+                            <h4>Збір гостей 🥂</h4>
+                            <p>Зустрічаємось на локації (Світязь). Обійми та фото.</p>
+                        </div>
+                    </div>
+
+                    <div class="t-item">
+                        <div class="t-time">14:30</div>
+                        <div class="t-content">
+                            <h4>Церемонія 💍</h4>
+                            <p>Момент, коли нас оголосять чоловіком і дружиною.</p>
+                        </div>
+                    </div>
+
+                    <div class="t-item">
+                        <div class="t-time">15:00</div>
+                        <div class="t-content">
+                            <h4>Chill Time ✨</h4>
+                            <p>Привітання, фуршет, ігристе та інтерактив.</p>
+                        </div>
+                    </div>
+
+                    <div class="t-item">
+                        <div class="t-time">16:00</div>
+                        <div class="t-content">
+                            <h4>Нарешті можна поїсти 🍽️</h4>
+                            <p>Святковий банкет і перший танець.</p>
+                        </div>
+                    </div>
+
+                    <div class="t-item">
+                        <div class="t-time">00:00</div>
+                        <div class="t-content">
+                            <h4>На коня 🌙</h4>
+                            <p>Завершення вечора. До нових зустрічей!</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="photo-break" data-aos="zoom-in-up">
+            <img src="photo2.jpg" alt="Наше фото 2">
+        </section>
+
+        <section class="timer-section" data-aos="fade-in">
+            <p class="timer-title">До нашого свята залишилось</p>
+            <div id="timer">
+                <div class="time-box"><span id="days">00</span><small>днів</small></div>
+                <div class="sep">:</div>
+                <div class="time-box"><span id="hours">00</span><small>год</small></div>
+                <div class="sep">:</div>
+                <div class="time-box"><span id="minutes">00</span><small>хв</small></div>
+            </div>
+        </section>
+
+        <section class="details-section">
+            <div class="container grid-2">
+                <div class="detail-card" data-aos="flip-left">
+                    <img src="dresscode.jpg" alt="Дрес-код">
+                    <div class="detail-content">
+                        <h3>ДРЕС-КОД 👗</h3>
+                        <p>Будемо вдячні за пастельні тони (беж, пісок, природа).</p>
+                        <span class="note">Важливо: Білий колір — для нареченої</span>
+                    </div>
+                </div>
+
+                <div class="detail-card" data-aos="flip-right">
+                    <img src="gifts.jpg" alt="Подарунки">
+                    <div class="detail-content">
+                        <h3>ПОДАРУНКИ 🎁</h3>
+                        <p>Квіти зав'януть, а спогади — ні.</p>
+                        <p>Будемо раді пляшці алкоголю або вашій <b>улюбленій книзі</b> 📚🍷</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="rsvp-section" data-aos="fade-up">
+            <div class="form-wrapper">
+                <h2>R.S.V.P 💌</h2>
+                <p>Чекаємо на вашу відповідь до 01.07.2026</p>
+                
+                <form action="https://formspree.io/f/ВАШ_КОД" method="POST" class="modern-form">
+                    <div class="input-group">
+                        <input type="text" name="name" required placeholder=" ">
+                        <label>Ваші імена</label>
+                    </div>
+
+                    <div class="radio-wrapper">
+                        <p>Чи будете ви з нами?</p>
+                        <div class="radios">
+                            <label class="radio-btn"><input type="radio" name="attend" value="yes" checked> <span>Так, звісно!</span></label>
+                            <label class="radio-btn"><input type="radio" name="attend" value="no"> <span>На жаль, ні</span></label>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" name="comment" placeholder=" ">
+                        <label>Коментар</label>
+                    </div>
+
+                    <button type="submit" class="btn-anim dark"><span>ВІДПРАВИТИ</span></button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="music-fab" onclick="toggleMusic()">
+        <div class="bars" id="music-bars">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+    
+    <audio id="my-audio" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <footer>
+        <p>З любов'ю, Андрій та Олександра ❤️ 2026</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

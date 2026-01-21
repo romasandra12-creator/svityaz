@@ -1,219 +1,131 @@
-/* === БАЗА === */
+/* === БАЗА & ШРИФТИ === */
 body {
-    background-color: #f7f5f0; /* Пісочний */
-    color: #4a4a4a;
+    background-color: #f4f1ea; /* Світлий пісок */
+    color: #333;
     font-family: 'Montserrat', sans-serif;
-    margin: 0; overflow-x: hidden;
+    margin: 0; 
+    overflow-x: hidden;
 }
-h1, h2, h3, h4 { font-family: 'Playfair Display', serif; margin: 0; }
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; margin: 0; text-transform: uppercase; }
 .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
+/* === FILM GRAIN (ЗЕРНИСТІСТЬ) === */
+.noise-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 999; opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* === PRELOADER (ІНТРО) === */
+#preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #111; z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; transition: opacity 1s ease-out;
+}
+.loader-content { text-align: center; }
+.loader-text { font-family: 'Playfair Display'; font-size: 2rem; letter-spacing: 3px; animation: fadeInUp 1s ease forwards; opacity: 0; }
+.loader-date { font-family: 'Montserrat'; font-size: 1rem; letter-spacing: 5px; margin-top: 10px; animation: fadeInUp 1s ease forwards 0.5s; opacity: 0; color: #888; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* === GLASSMORPHISM (СКЛО) === */
+.glass-frame, .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+}
+
 /* === HERO === */
-.hero { height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
-.hero-bg img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; animation: slowZoom 20s infinite alternate; z-index: -1; }
+.hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; overflow: hidden; }
+.hero-bg img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; animation: slowZoom 20s infinite alternate; z-index: -2; }
 @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
-.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); }
-.hero-content { z-index: 2; position: relative; padding: 20px; }
-.border-frame { border: 1px solid rgba(255,255,255,0.7); padding: 40px 20px; backdrop-filter: blur(2px); }
-.names { font-size: 3.2rem; letter-spacing: 2px; margin: 15px 0; }
-.amp { font-style: italic; color: #e0d0b6; }
-.location-hero { font-size: 1.2rem; letter-spacing: 3px; margin-top: 20px; }
-.scroll-down { position: absolute; bottom: 30px; z-index: 2; color: #fff; text-align: center; animation: bounce 2s infinite; }
+.overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: -1; }
+.glass-frame { padding: 50px 30px; border-radius: 2px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.names { font-size: 3rem; letter-spacing: 2px; margin: 15px 0; }
+.amp { font-style: italic; color: #f0e6dd; }
+.location-hero { letter-spacing: 5px; font-size: 1rem; }
+.scroll-down { position: absolute; bottom: 30px; animation: bounce 2s infinite; font-size: 2rem; color: #fff; }
 @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
 
-/* === ІСТОРІЯ === */
+/* === MARQUEE (РУХОМИЙ РЯДОК) === */
+.marquee-strip { background: #222; color: #fff; padding: 15px 0; overflow: hidden; white-space: nowrap; position: relative; border-bottom: 1px solid #444; }
+.marquee-content { display: inline-block; font-family: 'Montserrat'; font-weight: 500; letter-spacing: 3px; font-size: 0.9rem; animation: scrollLeft 20s linear infinite; }
+@keyframes scrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* === ІСТОРІЯ & ФОТО === */
 .story-section { padding: 80px 0; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.story-img img { width: 100%; border-radius: 5px; box-shadow: 10px 10px 0px #e6dfd1; }
-.story-text-block h2 { font-size: 2.2rem; margin-bottom: 20px; }
-.quote { border-left: 3px solid #cbbba6; padding-left: 20px; margin-top: 20px; font-style: italic; font-size: 1.1rem; }
+.story-img img { width: 100%; border-radius: 5px; box-shadow: 10px 10px 0px rgba(0,0,0,0.1); }
+.story-text-block h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.quote { padding: 20px; font-style: italic; font-size: 1.2rem; margin: 20px 0; text-align: center; border-radius: 4px; }
 
-/* === ФОТО-ПАУЗИ (ЖУРНАЛЬНИЙ СТИЛЬ) === */
-.photo-break { width: 100%; margin: 40px 0; overflow: hidden; }
-.photo-break img { width: 100%; height: auto; max-height: 500px; object-fit: cover; display: block; }
+.photo-break img { width: 100%; height: auto; max-height: 550px; object-fit: cover; display: block; filter: sepia(10%); }
 
 /* === ТАЙМІНГ === */
-.timeline-section { padding: 60px 0; background: #fff; }
+.timeline-section { padding: 80px 0; }
 .timeline-section h2 { text-align: center; margin-bottom: 50px; font-size: 2.5rem; }
-.timeline { position: relative; max-width: 600px; margin: 0 auto; border-left: 2px solid #e6dfd1; padding-left: 30px; }
-.t-item { position: relative; margin-bottom: 40px; }
-.t-item::before { content: ''; position: absolute; left: -36px; top: 5px; width: 10px; height: 10px; background: #cbbba6; border-radius: 50%; }
-.t-time { font-weight: bold; color: #cbbba6; font-size: 1.1rem; margin-bottom: 5px; }
+.timeline { position: relative; max-width: 600px; margin: 0 auto; border-left: 1px solid #ccc; padding-left: 30px; }
+.t-item { margin-bottom: 40px; position: relative; }
+.t-item::before { content: ''; position: absolute; left: -35px; top: 15px; width: 10px; height: 10px; background: #333; border-radius: 50%; }
+.t-time { font-weight: bold; margin-bottom: 5px; font-size: 1.1rem; color: #555; }
+.t-content { padding: 25px; border-radius: 8px; }
 .t-content h4 { font-size: 1.3rem; margin-bottom: 5px; }
-.t-content p { font-size: 0.95rem; color: #666; margin: 0; }
-.map-link { display: inline-block; margin-top: 8px; color: #887a66; text-decoration: underline; font-size: 0.9rem; font-weight: bold; }
+.map-link { display: inline-block; margin-top: 10px; color: #333; text-decoration: underline; font-weight: 600; font-size: 0.9rem; }
 
 /* === ТАЙМЕР === */
-.timer-section { padding: 60px 0; text-align: center; border-top: 1px solid #eee; border-bottom: 1px solid #eee; background: #fdfdfd; }
-.timer-title { letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; color: #999; }
-#timer { display: flex; justify-content: center; gap: 15px; font-family: 'Playfair Display'; font-size: 2.5rem; color: #333; }
+.timer-section { padding: 60px 0; text-align: center; background: #fff; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+.timer-title { letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 20px; color: #777; }
+#timer { display: flex; justify-content: center; gap: 20px; font-family: 'Playfair Display'; font-size: 3rem; }
 .sep { animation: blink 1s infinite; opacity: 0.5; }
-@keyframes blink { 50% { opacity: 0; } }
-#timer small { display: block; font-size: 0.6rem; font-family: 'Montserrat'; text-transform: uppercase; color: #999; letter-spacing: 1px; }
+#timer small { display: block; font-size: 0.7rem; font-family: 'Montserrat'; color: #999; letter-spacing: 1px; }
 
 /* === ДЕТАЛІ === */
 .details-section { padding: 80px 0; }
-.detail-card { background: #fff; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); padding-bottom: 20px; }
-.detail-card img { width: 100%; height: 250px; object-fit: cover; }
-.detail-content { padding: 20px; }
-.note { display: inline-block; margin-top: 15px; background: #f4f1ea; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; }
+.detail-card { text-align: center; padding-bottom: 20px; border-radius: 8px; overflow: hidden; }
+.detail-card img { width: 100%; height: 280px; object-fit: cover; }
+.detail-content { padding: 25px; }
+.note { display: inline-block; margin-top: 15px; font-size: 0.85rem; background: #333; color: #fff; padding: 5px 10px; border-radius: 20px; }
 
 /* === ФОРМА === */
-.rsvp-section { padding: 80px 0; background: #fff; text-align: center; }
-.form-wrapper { max-width: 500px; margin: 0 auto; padding: 0 20px; }
-.modern-form { margin-top: 40px; text-align: left; }
-.input-group { position: relative; margin-bottom: 30px; }
-.input-group input { width: 100%; padding: 10px 0; border: none; border-bottom: 1px solid #ccc; outline: none; font-family: 'Montserrat'; font-size: 1rem; background: transparent; }
-.input-group label { position: absolute; top: 10px; left: 0; pointer-events: none; transition: 0.3s; color: #999; }
-.input-group input:focus ~ label, .input-group input:not(:placeholder-shown) ~ label { top: -15px; font-size: 0.8rem; color: #2a2a2a; }
-.radio-wrapper p { margin-bottom: 15px; font-weight: bold; }
-.radios { display: flex; gap: 20px; }
-.radio-btn { cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.rsvp-section { padding: 80px 0; }
+.form-wrapper { max-width: 500px; margin: 0 auto; padding: 40px; border-radius: 8px; text-align: center; }
+.modern-form { margin-top: 30px; text-align: left; }
+.input-group { margin-bottom: 25px; position: relative; }
+.input-group input { width: 100%; padding: 12px 0; background: transparent; border: none; border-bottom: 1px solid #555; outline: none; font-size: 1rem; }
+.input-group label { position: absolute; top: 12px; left: 0; color: #777; transition: 0.3s; pointer-events: none; }
+.input-group input:focus ~ label, .input-group input:not(:placeholder-shown) ~ label { top: -15px; font-size: 0.8rem; color: #000; }
+.btn-anim { width: 100%; padding: 15px; background: #222; color: #fff; border: none; cursor: pointer; letter-spacing: 2px; transition: 0.3s; }
+.btn-anim:hover { background: #444; }
 
-/* === КНОПКИ === */
-.btn-anim { display: inline-block; padding: 15px 40px; border: 1px solid #2a2a2a; color: #2a2a2a; text-decoration: none; position: relative; overflow: hidden; transition: color 0.4s; letter-spacing: 2px; font-size: 0.8rem; }
-.btn-anim span { position: relative; z-index: 2; }
-.btn-anim::before { content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%; background: #2a2a2a; transition: width 0.4s; z-index: 1; }
-.btn-anim:hover { color: #fff; }
-.btn-anim:hover::before { width: 100%; }
-.btn-anim.dark { background: #2a2a2a; color: #fff; width: 100%; border: none; cursor: pointer; }
-.btn-anim.dark:hover { color: #fff; }
-.btn-anim.dark::before { background: #444; }
+/* === МУЗИКА (ЗНАЧОК НОТИ) === */
+.music-fab {
+    position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px;
+    background: #222; border-radius: 50%; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 900; transition: transform 0.2s;
+}
+.music-fab:active { transform: scale(0.9); }
+.note-icon { font-size: 20px; color: #fff; }
 
-/* === МУЗИКА === */
-.music-fab { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #fff; border-radius: 50%; box-shadow: 0 5px 20px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 100; }
-.bars { display: flex; align-items: flex-end; gap: 3px; height: 20px; }
-.bar { width: 4px; background: #2a2a2a; animation: sound 0s infinite; height: 5px; }
-@keyframes sound { 0% { height: 5px; } 50% { height: 20px; } 100% { height: 5px; } }
-.playing .bar { animation-duration: 0.5s; }
-.playing .bar:nth-child(2) { animation-delay: 0.1s; }
-.playing .bar:nth-child(3) { animation-delay: 0.2s; }
-.playing .bar:nth-child(4) { animation-delay: 0.3s; }
+/* Анімація пульсації */
+.pulse-ring {
+    position: absolute; width: 100%; height: 100%; border-radius: 50%;
+    border: 2px solid #222; animation: pulse 2s infinite; opacity: 0; pointer-events: none;
+}
+.playing .pulse-ring { animation: pulse 1.5s infinite; }
+.playing .note-icon { animation: spinNote 3s linear infinite; }
 
-footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #aaa; }
+@keyframes pulse { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2); opacity: 0; } }
+@keyframes spinNote { 0% { transform: rotate(0deg); } 25% { transform: rotate(15deg); } 75% { transform: rotate(-15deg); } 100% { transform: rotate(0deg); } }
+
+footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #888; }
 
 @media (max-width: 768px) {
     .grid-2 { grid-template-columns: 1fr; }
-    .names { font-size: 2.5rem; }
-}
-
-.paper-container { max-width: 900px; margin: 0 auto; padding: 0 15px; }
-
-/* === ГЕРОЙ === */
-.hero { text-align: center; margin-bottom: 40px; position: relative; }
-.hero h2 { font-size: 1.2rem; margin-bottom: 10px; }
-.hero .line { border-bottom: 2px solid #000; margin: 10px 0; }
-.names { font-size: 2.5rem; letter-spacing: 2px; }
-.subtitle { font-size: 1.2rem; margin-bottom: 20px; }
-
-.hero-image-wrapper { position: relative; display: inline-block; width: 100%; }
-.main-img { 
-    width: 100%; height: auto; display: block; 
-    filter: grayscale(100%); transition: filter 0.5s; 
-}
-.main-img:hover { filter: grayscale(0%); }
-.top-right { top: 15%; right: 5%; font-size: 1.8rem; }
-
-/* === ІНТРО ТА ДРЕС-КОД === */
-.intro-grid, .dresscode-grid { display: flex; gap: 30px; margin-bottom: 50px; flex-wrap: wrap; }
-.dresscode-grid { flex-direction: row-reverse; }
-
-.intro-img, .dress-img { flex: 1; min-width: 300px; }
-.intro-img img, .dress-img img { width: 100%; filter: grayscale(100%); transition: filter 0.5s; }
-.intro-img img:hover, .dress-img img:hover { filter: grayscale(0%); }
-
-.intro-text, .dress-text { flex: 1; padding-top: 20px; position: relative; }
-
-/* Кнопки та Локація */
-.location-box { border: 1px solid #000; padding: 20px; margin-top: 30px; text-align: center; }
-.btn-outline, .btn-black {
-    display: inline-block; padding: 12px 25px; margin-top: 15px;
-    border: 1px solid #000; text-decoration: none; color: #000; 
-    text-transform: uppercase; font-family: 'Playfair Display'; transition: 0.3s;
-    cursor: pointer;
-}
-.btn-outline:hover { background: #000; color: #fff; }
-.btn-black { background: #000; color: #fff; border: none; width: 100%; }
-
-/* === ТАЙМЕР === */
-.countdown-section {
-    position: relative; height: 400px; color: white;
-    display: flex; align-items: center; justify-content: center; text-align: center;
-    margin-bottom: 50px; overflow: hidden;
-}
-.bg-img { position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; filter: grayscale(100%); z-index: -1; }
-.overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); z-index: 0; }
-.countdown-content { z-index: 1; position: relative; }
-#timer { display: flex; gap: 20px; font-size: 1rem; justify-content: center; margin-top: 10px;}
-#timer span { display: block; font-size: 3rem; font-family: 'Playfair Display'; line-height: 1;}
-
-/* === ПРОГРАМА === */
-.timeline-section { position: relative; margin-bottom: 50px; }
-.timeline { border-left: 2px solid #000; margin-left: 20px; padding-left: 30px; margin-top: 30px; }
-.event { margin-bottom: 40px; position: relative; }
-.time-icon { position: absolute; left: -52px; display: flex; flex-direction: column; align-items: center; }
-.icon { background: #fff; padding: 5px; font-size: 1.5rem; }
-.time-icon span { font-weight: bold; font-family: 'Playfair Display'; margin-top: 5px; }
-.left-side { top: 0; right: 0; }
-
-/* === ОРГАНІЗАТОР, ПОБАЖАННЯ, ГІРКО === */
-.wishes, .organizer { text-align: center; margin-bottom: 50px; }
-.gifts-img, .org-banner { width: 100%; max-height: 250px; object-fit: cover; margin-bottom: 20px; filter: grayscale(100%); }
-.org-box { border: 1px solid #ddd; padding: 20px; background: white; width: 90%; margin: -40px auto 0; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-.gorko-block { border-top: 2px solid #000; border-bottom: 2px solid #000; padding: 20px 0; margin-top: 30px; }
-.gorko-header { position: relative; display: inline-block; margin-bottom: 10px; }
-.gorko-header .red { top: -15px; right: -90px; }
-.strip-img { width: 100%; height: 100px; object-fit: cover; margin-top: 15px; filter: grayscale(100%); }
-
-/* === КРОСВОРД === */
-.game-section { text-align: center; margin-bottom: 50px; position: relative; background: #f9f9f9; padding: 30px 10px; }
-.word-grid { font-family: monospace; letter-spacing: 5px; line-height: 2; font-size: 1.1rem; margin: 20px 0; text-transform: uppercase; overflow-x: auto;}
-.word-list span { margin: 0 10px; font-weight: bold; border-bottom: 1px solid #000; display: inline-block; margin-top: 10px;}
-.right { top: 20px; right: 20px; }
-
-/* === АНКЕТА === */
-.rsvp-form { max-width: 600px; margin: 0 auto 50px; padding: 20px; border: 2px solid #000; }
-.rsvp-form h3 { text-align: center; margin-bottom: 30px; font-size: 2rem; }
-form { display: flex; flex-direction: column; gap: 15px; }
-input[type="text"] { border: none; border-bottom: 1px solid #000; padding: 10px; font-family: 'Lora'; outline: none; background: transparent; font-size: 1rem;}
-.radio-group { display: flex; flex-direction: column; gap: 10px; margin: 10px 0; }
-.palette { display: flex; gap: 10px; margin-top: 20px; }
-.palette span { width: 40px; height: 40px; border-radius: 50%; display: block; border: 1px solid #eee; }
-.bottom-right { bottom: 0; right: 0; }
-
-/* === ФІНАЛЬНИЙ БАНЕР === */
-.final-banner { margin-top: 50px; width: 100%; position: relative; }
-.image-wrapper { position: relative; width: 100%; }
-.image-wrapper img { width: 100%; height: auto; display: block; filter: grayscale(100%); }
-.overlay-text {
-    position: absolute; bottom: 20%; left: 0; width: 100%; text-align: center;
-    font-family: 'Marck Script', cursive; color: #d13a3a;
-    font-size: clamp(1.5rem, 5vw, 3rem); line-height: 1.4;
-    text-shadow: 0 0 10px rgba(255,255,255,0.5); margin: 0; z-index: 10;
-}
-
-/* === МУЗИКА === */
-.music-btn { 
-    position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; 
-    background: #000; border-radius: 50%; display: flex; align-items: center; 
-    justify-content: center; z-index: 100; cursor: pointer; 
-    border: 2px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
-    transition: transform 0.3s;
-}
-.music-btn:active { transform: scale(0.9); }
-
-.vinyl { 
-    font-size: 24px; 
-    animation: spin 4s linear infinite; 
-    animation-play-state: paused; /* Спочатку стоїть */
-}
-@keyframes spin { 100% { transform: rotate(360deg); } }
-
-/* АДАПТАЦІЯ */
-@media (max-width: 768px) {
-    .intro-grid, .dresscode-grid { flex-direction: column; }
-    .hero .names { font-size: 2rem; }
-    .word-grid { letter-spacing: 2px; font-size: 0.9rem; }
-    .countdown-section { height: 300px; }
-    #timer span { font-size: 2rem; }
+    .names { font-size: 2.2rem; }
+    .marquee-content { font-size: 0.8rem; }
+    .glass-frame { padding: 30px 15px; }
 }
